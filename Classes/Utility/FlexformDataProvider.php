@@ -167,7 +167,8 @@ class user_Tx_PtExtlist_Utility_FlexformDataProvider {
 	 * @return string
 	 */
 	protected function getFlexformValue($optionName, $config) {
-		$flexformContent = GeneralUtility::xml2array($config['row']['pi_flexform']);
+		//$flexformContent = GeneralUtility::xml2array($config['row']['pi_flexform']);
+		$flexformContent = $config['flexParentDatabaseRow']['pi_flexform'];
 		if (is_array($flexformContent)
 			&& array_key_exists('data', $flexformContent)
 			&& array_key_exists('sDefault', $flexformContent['data'])
@@ -203,6 +204,8 @@ class user_Tx_PtExtlist_Utility_FlexformDataProvider {
 	 * @return integer
 	 */
 	protected function getCurrentPID($config) {
+		$row = $config['flexParentDatabaseRow'];
+		return $row['pid'];
 		return (int)$config['row']['pid'];
 	}
 

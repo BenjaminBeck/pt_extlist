@@ -72,7 +72,7 @@ class Tx_PtExtlist_Domain_DataBackend_DataSource_Typo3DataSource extends Tx_PtEx
 		try {
 			$this->startTimeMeasure();
 			$this->resource = $this->connection->sql_query($query);
-			Tx_PtExtbase_Assertions_Assert::isMySQLRessource($this->resource, $this->dbObj);
+			Tx_PtExtbase_Assertions_Assert::isMySQLRessource($this->resource, null);
 			$this->stopTimeMeasure();
 		} catch(Exception $e) {
 			throw new Exception('Error while retrieving data from database using typo3 db object.<br> 
