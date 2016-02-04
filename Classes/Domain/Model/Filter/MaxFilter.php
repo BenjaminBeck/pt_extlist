@@ -55,7 +55,7 @@ class Tx_PtExtlist_Domain_Model_Filter_MaxFilter extends Tx_PtExtlist_Domain_Mod
 
         if ($this->isActive) {
             $fieldName = Tx_PtExtlist_Utility_DbUtils::getSelectPartByFieldConfig($fieldIdentifier);
-            $filterValue = intval($this->filterValue);
+            $filterValue = floatval($this->filterValue);
             $criteria = Tx_PtExtlist_Domain_QueryObject_Criteria::lessThanEquals($fieldName, $filterValue);
         }
 
@@ -79,7 +79,7 @@ class Tx_PtExtlist_Domain_Model_Filter_MaxFilter extends Tx_PtExtlist_Domain_Mod
 
         // Check whether given value is above max value set in TS
         if (array_key_exists('maxValue', $validation)
-            && intval($this->filterValue) > $validation['maxValue']) {
+            && floatval($this->filterValue) > $validation['maxValue']) {
 
             // TODO localize this string!
             $this->errorMessage = 'Value is not allowed to be bigger than '.$validation['maxValue'];
@@ -88,7 +88,7 @@ class Tx_PtExtlist_Domain_Model_Filter_MaxFilter extends Tx_PtExtlist_Domain_Mod
 
         // Check whether min value is below min value set in TS
         if (array_key_exists('minValue', $validation)
-            && intval($this->filterValue) < $validation['minValue']) {
+            && floatval($this->filterValue) < $validation['minValue']) {
 
             // TODO localize this string!
             $this->errorMessage = 'Value is not allowed to be smaller than '.$validation['minValue'];
